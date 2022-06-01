@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.10.008">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.4.000" expanded="true" name="Process" origin="GENERATED_TUTORIAL">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_excel" compatibility="9.10.008" expanded="true" height="68" name="Read Excel" width="90" x="45" y="34">
+        <parameter key="excel_file" value="/home/rhp/Documentos/ExemplosRapidminer/ex001_HelloWorld/vinhos.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="id_vinho.true.integer.attribute"/>
+          <parameter key="1" value="produtor.true.polynominal.attribute"/>
+          <parameter key="2" value="acidez_fixa.true.real.attribute"/>
+          <parameter key="3" value="acidez_volatil.true.real.attribute"/>
+          <parameter key="4" value="acido_citrico.true.real.attribute"/>
+          <parameter key="5" value="acucar_residual.true.real.attribute"/>
+          <parameter key="6" value="cloretos.true.real.attribute"/>
+          <parameter key="7" value="so2_livre.true.integer.attribute"/>
+          <parameter key="8" value="so2_total.true.real.attribute"/>
+          <parameter key="9" value="densidade.true.real.attribute"/>
+          <parameter key="10" value="pH.true.real.attribute"/>
+          <parameter key="11" value="sulfitos.true.real.attribute"/>
+          <parameter key="12" value="alcool.true.real.attribute"/>
+          <parameter key="13" value="tipo.true.polynominal.attribute"/>
+          <parameter key="14" value="qualidade.true.integer.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="productivity:obfuscate" compatibility="9.10.008" expanded="true" height="82" name="Obfuscate" width="90" x="179" y="187">
+        <parameter key="obfuscation_map_file" value="ofuscation.obf"/>
+        <parameter key="use_local_random_seed" value="true"/>
+        <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="9.10.008" expanded="true" height="103" name="Write Excel" width="90" x="447" y="391">
+        <parameter key="excel_file" value="output_obfuscated.xls"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names"/>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="number_format" value="#.0"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <operator activated="true" class="productivity:de_obfuscate" compatibility="9.10.008" expanded="true" height="82" name="De-Obfuscate" width="90" x="715" y="187">
+        <parameter key="obfuscation_map_file" value="ofuscation.obf"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="9.10.008" expanded="true" height="124" name="Write Excel (2)" width="90" x="983" y="34">
+        <parameter key="excel_file" value="final.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names"/>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="number_format" value="#.0"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <connect from_port="input 1" to_op="Read Excel" to_port="file"/>
+      <connect from_op="Read Excel" from_port="output" to_op="Obfuscate" to_port="example set input"/>
+      <connect from_op="Obfuscate" from_port="example set output" to_op="Write Excel" to_port="input"/>
+      <connect from_op="Obfuscate" from_port="original" to_op="Write Excel (2)" to_port="input 2"/>
+      <connect from_op="Write Excel" from_port="through" to_op="De-Obfuscate" to_port="example set input"/>
+      <connect from_op="De-Obfuscate" from_port="example set output" to_op="Write Excel (2)" to_port="input"/>
+      <connect from_op="De-Obfuscate" from_port="original" to_port="result 2"/>
+      <connect from_op="Write Excel (2)" from_port="file" to_port="result 3"/>
+      <connect from_op="Write Excel (2)" from_port="through" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="source_input 2" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="51" resized="true" width="208" x="121" y="326">Ofusca toda a informa&amp;#231;&amp;#227;o do MS-Excel</description>
+      <description align="center" color="yellow" colored="false" height="51" resized="false" width="208" x="393" y="501">Guarda uma vers&amp;#227;o ofuscada do MS-Excel</description>
+      <description align="center" color="yellow" colored="false" height="51" resized="false" width="208" x="667" y="286">Desofusca toda a informa&amp;#231;&amp;#227;o do MS-Excel</description>
+    </process>
+  </operator>
+</process>
