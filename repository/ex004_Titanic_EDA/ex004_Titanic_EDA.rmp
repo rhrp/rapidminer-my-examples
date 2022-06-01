@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><process version="9.10.008">
+<?xml version="1.0" encoding="UTF-8"?><process version="9.10.006">
   <context>
     <input/>
     <output/>
     <macros/>
   </context>
-  <operator activated="true" class="process" compatibility="9.10.008" expanded="true" name="Process">
+  <operator activated="true" class="process" compatibility="9.10.006" expanded="true" name="Process">
     <parameter key="logverbosity" value="init"/>
     <parameter key="random_seed" value="2001"/>
     <parameter key="send_mail" value="never"/>
@@ -12,8 +12,8 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="read_csv" compatibility="9.10.008" expanded="true" height="68" name="Read CSV" width="90" x="45" y="34">
-        <parameter key="csv_file" value="/home/rhp/Documentos/RapidMiner/MyDatasets/titanic.csv"/>
+      <operator activated="true" class="read_csv" compatibility="9.10.006" expanded="true" height="68" name="Read CSV" width="90" x="45" y="34">
+        <parameter key="csv_file" value="/home/rhp/git/rapidminer-my-examples/repository/ex004_Titanic_EDA/titanic.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -50,7 +50,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="false"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="9.10.008" expanded="true" height="103" name="1-Cleaned null records" width="90" x="112" y="340">
+      <operator activated="true" class="filter_examples" compatibility="9.10.006" expanded="true" height="103" name="1-Cleaned null records" width="90" x="112" y="340">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -62,7 +62,7 @@
         <parameter key="filters_check_metadata" value="true"/>
         <description align="center" color="yellow" colored="true" width="126">Filter all records in which there are null values</description>
       </operator>
-      <operator activated="true" class="select_attributes" compatibility="9.10.008" expanded="true" height="82" name="2-Selection of attributes" width="90" x="179" y="136">
+      <operator activated="true" class="select_attributes" compatibility="9.10.006" expanded="true" height="82" name="2-Selection of attributes" width="90" x="179" y="136">
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
         <parameter key="attributes" value="Age|Fare|Survived|Sex"/>
@@ -77,7 +77,7 @@
         <parameter key="include_special_attributes" value="false"/>
         <description align="center" color="transparent" colored="false" width="126">Selection of attributes&lt;br/&gt;</description>
       </operator>
-      <operator activated="true" class="discretize_by_user_specification" compatibility="9.10.008" expanded="true" height="103" name="Discretize Age" width="90" x="313" y="34">
+      <operator activated="true" class="discretize_by_user_specification" compatibility="9.10.006" expanded="true" height="103" name="Discretize Age" width="90" x="313" y="34">
         <parameter key="return_preprocessing_model" value="false"/>
         <parameter key="create_view" value="false"/>
         <parameter key="attribute_filter_type" value="single"/>
@@ -98,7 +98,7 @@
         </list>
         <description align="center" color="yellow" colored="true" width="126">Adults=0&lt;br/&gt;Childs=1</description>
       </operator>
-      <operator activated="true" class="parse_numbers" compatibility="9.10.008" expanded="true" height="82" name="Parse Numbers" width="90" x="313" y="289">
+      <operator activated="true" class="parse_numbers" compatibility="9.10.006" expanded="true" height="82" name="Parse Numbers" width="90" x="313" y="289">
         <parameter key="attribute_filter_type" value="single"/>
         <parameter key="attribute" value="Age"/>
         <parameter key="attributes" value=""/>
@@ -118,7 +118,7 @@
         <parameter key="unparsable_value_handling" value="fail"/>
         <description align="center" color="yellow" colored="true" width="126">Convert Age to number</description>
       </operator>
-      <operator activated="true" class="nominal_to_numerical" compatibility="9.10.008" expanded="true" height="103" name="Sex Nominal to Numerical" width="90" x="514" y="34">
+      <operator activated="true" class="nominal_to_numerical" compatibility="9.10.006" expanded="true" height="103" name="Sex Nominal to Numerical" width="90" x="514" y="34">
         <parameter key="return_preprocessing_model" value="false"/>
         <parameter key="create_view" value="false"/>
         <parameter key="attribute_filter_type" value="single"/>
@@ -140,7 +140,7 @@
         <parameter key="use_underscore_in_name" value="false"/>
         <description align="center" color="yellow" colored="true" width="126">Convert Sex to numerical</description>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="9.10.008" expanded="true" height="103" name="Filter Examples" width="90" x="514" y="442">
+      <operator activated="true" class="filter_examples" compatibility="9.10.006" expanded="true" height="103" name="Filter Examples" width="90" x="514" y="442">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -150,7 +150,7 @@
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="normalize" compatibility="9.10.008" expanded="true" height="103" name="Normalize" width="90" x="648" y="238">
+      <operator activated="true" class="normalize" compatibility="9.10.006" expanded="true" height="103" name="Normalize" width="90" x="648" y="238">
         <parameter key="return_preprocessing_model" value="false"/>
         <parameter key="create_view" value="false"/>
         <parameter key="attribute_filter_type" value="subset"/>
@@ -170,20 +170,20 @@
         <parameter key="max" value="1.0"/>
         <parameter key="allow_negative_values" value="false"/>
       </operator>
-      <operator activated="true" class="set_role" compatibility="9.10.008" expanded="true" height="82" name="Set Role" width="90" x="715" y="34">
+      <operator activated="true" class="set_role" compatibility="9.10.006" expanded="true" height="82" name="Set Role" width="90" x="715" y="34">
         <parameter key="attribute_name" value="Survived"/>
         <parameter key="target_role" value="label"/>
         <list key="set_additional_roles"/>
         <description align="center" color="yellow" colored="true" width="126">Make Survived as a Label</description>
       </operator>
-      <operator activated="true" class="weight_by_correlation" compatibility="9.10.008" expanded="true" height="82" name="Weight by Correlation" width="90" x="916" y="340">
+      <operator activated="true" class="weight_by_correlation" compatibility="9.10.006" expanded="true" height="82" name="Weight by Correlation" width="90" x="916" y="340">
         <parameter key="normalize_weights" value="false"/>
         <parameter key="sort_weights" value="true"/>
         <parameter key="sort_direction" value="ascending"/>
         <parameter key="squared_correlation" value="false"/>
         <description align="center" color="yellow" colored="true" width="126">Find the weigth of a variable in the label</description>
       </operator>
-      <operator activated="true" class="select_attributes" compatibility="9.10.008" expanded="true" height="82" name="2-Selection of attributes (2)" width="90" x="983" y="544">
+      <operator activated="true" class="select_attributes" compatibility="9.10.006" expanded="true" height="82" name="2-Selection of attributes (2)" width="90" x="983" y="544">
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
         <parameter key="attributes" value="Sex|Age|Fare|Survived|Passenger Class"/>
@@ -198,7 +198,7 @@
         <parameter key="include_special_attributes" value="false"/>
         <description align="center" color="yellow" colored="true" width="126">Final Selection for clustering</description>
       </operator>
-      <operator activated="true" class="concurrency:k_means" compatibility="9.10.008" expanded="true" height="82" name="Clustering" width="90" x="1117" y="391">
+      <operator activated="true" class="concurrency:k_means" compatibility="9.10.006" expanded="true" height="82" name="Clustering" width="90" x="1117" y="391">
         <parameter key="add_cluster_attribute" value="true"/>
         <parameter key="add_as_label" value="false"/>
         <parameter key="remove_unlabeled" value="false"/>
